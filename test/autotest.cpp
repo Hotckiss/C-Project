@@ -1,6 +1,7 @@
 #include "autotest.h"
 #include <cstdlib>
 #include <iostream>
+
 void double_queue_test::test_push_pop() {
 	double_queue q;
 	huffman_node* huffman_nodes[4];
