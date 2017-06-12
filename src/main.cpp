@@ -12,6 +12,12 @@ using namespace std;
 int main(int argc, char *argv[]) {
 	std::ios::sync_with_stdio(false);
 	huffman_archiever ha;
+	if(argc == 2) {
+		if(!strcmp(argv[1], "-h"))
+			cerr << "Input file: -f(--file) + filename\nOutput file: -o(--output) + filename\nCompression: -c; decompression -u(should be correct input file)\n";
+		else
+			return 0;
+	}
 	if(argc != 6)
 		return 0;
 	int code_or_decode = -1;
