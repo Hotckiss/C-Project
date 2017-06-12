@@ -125,6 +125,21 @@ void huffman_archiever_test::test_compress_decompress() {
 	} while (ifs1.gcount() > 0 && ifs2.gcount() > 0);
 }
 
+void huffman_archiever_test::test_compress_decompress2() {
+	huffman_archiever ha;
+	ha.compress("ts.pdf", "test_file_out.txt");
+	ha.decompress("test_file_out.txt", "tso.pdf");
+	std::ifstream ifs1("ts.pdf", std::ifstream::binary);
+	std::ifstream ifs2("tso.pdf", std::ifstream::binary);
+	char buf1[1024], buf2[1024];
+	do {
+		ifs1.read(buf1, sizeof(buf1));
+		ifs2.read(buf2, sizeof(buf2));
+		for (int i = 0; i < std::min(ifs1.gcount(), ifs2.gcount()); ++i)
+			DO_CHECK(buf1[i] == buf2[i]);
+	} while (ifs1.gcount() > 0 && ifs2.gcount() > 0);
+}
+
 void huffman_archiever_test::run_all_tests() {
 	test_count_frequency();
 	test_make_queue_build_free_tree();
@@ -133,6 +148,7 @@ void huffman_archiever_test::run_all_tests() {
 	test_get_log();
 	test_clear();
 	test_compress_decompress();
+	test_compress_decompress2();
 }
 
 void bit_accum_test::test_push_pop_bit() {

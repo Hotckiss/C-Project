@@ -24,6 +24,7 @@ public:
 class huffman_archiever_test : public huffman_test {
 public:
 	void test_compress_decompress();
+	void test_compress_decompress2();
 	void test_count_frequency();
 	void test_make_queue_build_free_tree();
 	void test_create_codes();
